@@ -1,0 +1,18 @@
+{
+  "list": [
+    {
+      "name": "月亮和六便士",
+      "ISBN": "222222222222",
+      "author": "毛姆",
+      "price": 14.2,
+      "ImgURL": "https://img1.doubanio.com/view/subject/l/public/s29634528.jpg"
+    },
+    {
+      "name": "围城",
+      "ISBN": "33333333333",
+      "author": "钱钟书",
+      "price": 15.8,
+      "ImgURL": "https://img3.doubanio.com/view/subject/l/public/s1070222.jpg"
+    }
+  ]
+}
