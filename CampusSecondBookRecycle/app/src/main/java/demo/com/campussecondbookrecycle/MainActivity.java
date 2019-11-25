@@ -4,11 +4,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.transition.FragmentTransitionSupport;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.material.tabs.TabLayout;
 
@@ -17,15 +21,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import demo.com.campussecondbookrecycle.Fragments.HomeFragment;
+import demo.com.campussecondbookrecycle.Fragments.OrderFragment;
 import demo.com.campussecondbookrecycle.Views.TabView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ViewPager mVpMain;
     private TabLayout mTlNav;
     private TabView mTabHome, mTabTextbook, mTabOrder, mTabMe;
     private List<String> titles =
             new ArrayList<>(Arrays.asList("小说","互联网","心理学","经济学"));
     private List<TabView> mTabs = new ArrayList<>();
+    private HomeFragment mHomeFragment;
+    private List<Fragment> fragments = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +47,10 @@ public class MainActivity extends AppCompatActivity {
             @NonNull
             @Override
             public Fragment getItem(int position) {
-                HomeFragment fragment = HomeFragment.newInstance(position);
+                mHomeFragment = HomeFragment.newInstance(position);
+                fragments.add(mHomeFragment);
                 Log.d("Test",position+"");
-                return fragment;
+                return mHomeFragment;
             }
 
             @Override
@@ -56,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                 return titles.get(position);
             }
         });
+
+        mTabOrder.setOnClickListener(this);
     }
 
     private void initView() {
@@ -81,6 +91,29 @@ public class MainActivity extends AppCompatActivity {
                 tab.setSelected(true);
             else
                 tab.setSelected(false);
+        }
+    }
+
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//
+//    }
+
+    @Override
+    public void onClick(View v) {
+        FragmentTransaction ft =getSupportFragmentManager().beginTransaction();
+        switch (v.getId()){
+            case R.id.tab_order:
+                if(mHomeFragment.isAdded()){
+                    for(Fragment fragment : fragments){
+                        ft.hide(fragment);
+                    }
+                }
+                ft.add(R.id.fl_replaced,new OrderFragment()).commit();
+                mTlNav.setVisibility(View.GONE);
+                mTabOrder.setSelected(true);
+                mTabHome.setSelected(false);
         }
     }
 }

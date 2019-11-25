@@ -1,4 +1,4 @@
-package demo.com.campussecondbookrecycle;
+package Models;
 
 public class BookModel {
     private String name;

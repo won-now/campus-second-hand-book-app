@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.alibaba.fastjson.JSON;
 
 import demo.com.campussecondbookrecycle.Adapters.BookListAdapter;
-import demo.com.campussecondbookrecycle.DailyBooksModel;
+import Models.DailyBooksModel;
 import demo.com.campussecondbookrecycle.R;
 import demo.com.campussecondbookrecycle.Utils.IOStreamHandler;
 
@@ -60,26 +60,24 @@ public class HomeFragment extends Fragment {
 
                 return;
             case NOVELS:
-
-                jsonString = IOStreamHandler.JsontoString(getActivity(),"DataSource.json");
+                jsonString = IOStreamHandler.JsontoString(getActivity(), "NovelsData.json");
                 Log.d("TEST",jsonString);
                 break;
             case INTERNET:
-                jsonString = IOStreamHandler.JsontoString(getActivity(),"DataSource.json");
+                jsonString = IOStreamHandler.JsontoString(getActivity(), "InternetBooksData.json");
                 Log.d("TEST",jsonString);
                 break;
             case PSYCHOLOGY:
-                jsonString = IOStreamHandler.JsontoString(getActivity(),"DataSource.json");
+                jsonString = IOStreamHandler.JsontoString(getActivity(), "NovelsData.json");
                 Log.d("TEST",jsonString);
                 break;
             case ECONOMICS:
-                jsonString = IOStreamHandler.JsontoString(getActivity(),"DataSource.json");
+                jsonString = IOStreamHandler.JsontoString(getActivity(), "NovelsData.json");
                 Log.d("TEST",jsonString);
                 break;
         }
         mBookList = JSON.parseObject(jsonString, DailyBooksModel.class);
 //        JSON.parseObject()
-        Log.d("BOOK",mBookList.toString());
     }
 
     @Nullable

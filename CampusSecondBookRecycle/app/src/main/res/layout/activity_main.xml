@@ -16,6 +16,7 @@
         android:layout_marginBottom="15dp"
         app:input_hint="书名 作者 ISBN"/>
     <FrameLayout
+        android:id="@+id/fl_replaced"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">

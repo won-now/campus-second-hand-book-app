@@ -13,6 +13,20 @@
       "author": "钱钟书",
       "price": 15.8,
       "ImgURL": "https://img3.doubanio.com/view/subject/l/public/s1070222.jpg"
+    },
+    {
+      "name": "呼吸",
+      "ISBN": "33333333333",
+      "author": "特德·姜",
+      "price": 11.8,
+      "ImgURL": "https://img3.doubanio.com/view/subject/l/public/s33516832.jpg"
+    },
+    {
+      "name": "孽子",
+      "ISBN": "33333333333",
+      "author": "白先勇",
+      "price": 21.1,
+      "ImgURL": "https://img3.doubanio.com/view/subject/l/public/s6240330.jpg"
     }
   ]
 }

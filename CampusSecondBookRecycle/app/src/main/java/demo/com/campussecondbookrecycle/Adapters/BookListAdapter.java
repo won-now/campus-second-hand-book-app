@@ -14,10 +14,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import demo.com.campussecondbookrecycle.BookModel;
+import Models.BookModel;
 import demo.com.campussecondbookrecycle.R;
 
-public class BookListAdapter  extends RecyclerView.Adapter<BookListAdapter.ViewHolder> {
+public class BookListAdapter  extends RecyclerView.Adapter<BookListAdapter.BookListViewHolder> {
 
     private Context mContext;
     private List<BookModel> books;
@@ -29,13 +29,13 @@ public class BookListAdapter  extends RecyclerView.Adapter<BookListAdapter.ViewH
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BookListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View viewItem = LayoutInflater.from(mContext).inflate(R.layout.item_list_books,parent,false);
-        return new ViewHolder(viewItem);
+        return new BookListViewHolder(viewItem);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BookListViewHolder holder, int position) {
         BookModel bookModel = books.get(position);
 
         Glide.with(mContext).load(bookModel.getImgURL()).into(holder.mIvBook);
@@ -49,11 +49,11 @@ public class BookListAdapter  extends RecyclerView.Adapter<BookListAdapter.ViewH
         return books.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class BookListViewHolder extends RecyclerView.ViewHolder{
         TextView mTvName, mTvAuthor, mTvPrice;
         ImageView mIvBook;
 
-        public ViewHolder(@NonNull View itemView) {
+        public BookListViewHolder(@NonNull View itemView) {
             super(itemView);
             mTvName = itemView.findViewById(R.id.tv_name);
             mTvAuthor = itemView.findViewById(R.id.tv_author);
