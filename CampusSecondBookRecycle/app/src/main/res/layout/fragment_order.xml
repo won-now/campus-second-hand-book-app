@@ -4,37 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <View
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tl_order"
+        style="@style/CustomTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#E6E6E6"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_buy"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="买书订单"
-            android:textSize="18sp"
-            android:background="@drawable/bg_order_btn"/>
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:background="#E6E6E6"/>
-        <Button
-            android:id="@+id/btn_sell"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/bg_order_btn"
-            android:text="卖书订单"
-            android:textSize="18sp"/>
-    </LinearLayout>
+        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:layout_width="match_parent"

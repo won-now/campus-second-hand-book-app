@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.SearchBookListActivity">
+
+    <demo.com.campussecondbookrecycle.Views.NavBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:show_back="true"
+        app:page_title="搜索"/>
+
+    <demo.com.campussecondbookrecycle.Views.SearchView
+        android:id="@+id/sv_book"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:imeOptions="actionSearch"
+        android:layout_marginTop="@dimen/marginSize" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_result_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/marginSize"
+        android:layout_marginLeft="@dimen/marginSize"
+        android:layout_marginRight="@dimen/marginSize"
+        android:layout_marginBottom="@dimen/marginSize"/>
+
+</LinearLayout>

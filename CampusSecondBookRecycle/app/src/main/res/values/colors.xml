@@ -6,5 +6,18 @@
 
     <color name="colorSearchBackground">#DDDDDD</color>
     <color name="colorMain">#0066cc</color>
+    <color name="colorMainH">#4CB6FD</color>
     <color name="colorTab">#707070</color>
+
+    <color name="colorQuality">#D6BA8C</color>
+    <color name="cartColer">#F18080</color>
+
+    <color name="lineColor">#c3c3c3</color>
+    <color name="white">#ffffff</color>
+    <!--<color name="mainColor">#d43433</color>-->
+    <!--<color name="mainColorH">#c80f1f</color>-->
+    <color name="itemColorH">#dee1e6</color>
+    <color name="titleColor">#333333</color>
+    <color name="infoColor">#888888</color>
+    <color name="barColor">#A2A2A2</color>
 </resources>

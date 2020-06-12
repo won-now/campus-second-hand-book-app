@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <demo.com.campussecondbookrecycle.Views.NavBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:show_back="false"
+        app:page_title="登录"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/marginSize"/>
+
+    <demo.com.campussecondbookrecycle.Views.InputView
+        android:id="@+id/input_usernum"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/inputViewHeight"
+        android:layout_marginTop="@dimen/marginSize"
+        app:input_icon="@drawable/user_num"
+        app:input_hint2="学号 工号"
+        app:is_password="false">
+    </demo.com.campussecondbookrecycle.Views.InputView>
+    
+    <View
+        style="@style/line"/>
+
+    <demo.com.campussecondbookrecycle.Views.InputView
+        android:id="@+id/input_password"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/inputViewHeight"
+        app:input_icon="@drawable/password"
+        app:input_hint2="密码"
+        app:is_password="true">
+    </demo.com.campussecondbookrecycle.Views.InputView>
+
+    <View
+        style="@style/line"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marginSize"
+        android:text="立即注册"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/infoSize"
+        android:textColor="@color/colorMain"
+        android:onClick="onRegisterClick"/>
+
+    <Button
+        style="@style/commitBtn"
+        android:text="登   录"
+        android:layout_marginTop="@dimen/marginSize"
+        android:onClick="onCommitClick"/>
+</LinearLayout>

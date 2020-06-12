@@ -13,16 +13,16 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-import Models.BookModel;
+import demo.com.campussecondbookrecycle.Models.OrderItemVo;
 import demo.com.campussecondbookrecycle.R;
 
 public class NestedHorizontalOrderedBooksListAdapter extends RecyclerView.Adapter<NestedHorizontalOrderedBooksListAdapter.OrderBookViewHolder> {
     private Context mContext;
-    private List<BookModel> mBooks;
+    private List<OrderItemVo> mOrderItemVos;
 
-    public NestedHorizontalOrderedBooksListAdapter(Context mContext, List<BookModel> mBooks) {
+    public NestedHorizontalOrderedBooksListAdapter(Context mContext, List<OrderItemVo> mOrderItemVos) {
         this.mContext = mContext;
-        this.mBooks = mBooks;
+        this.mOrderItemVos = mOrderItemVos;
     }
 
     @NonNull
@@ -34,12 +34,12 @@ public class NestedHorizontalOrderedBooksListAdapter extends RecyclerView.Adapte
 
     @Override
     public void onBindViewHolder(@NonNull OrderBookViewHolder holder, int position) {
-        Glide.with(mContext).load(mBooks.get(position).getImgURL()).into(holder.ivBook);
+        Glide.with(mContext).load(mOrderItemVos.get(position).getBookImage()).into(holder.ivBook);
     }
 
     @Override
     public int getItemCount() {
-        return mBooks.size();
+        return mOrderItemVos.size();
     }
 
     class OrderBookViewHolder extends RecyclerView.ViewHolder{

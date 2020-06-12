@@ -2,15 +2,27 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="demo.com.campussecondbookrecycle">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity" android:windowSoftInputMode="stateHidden|adjustPan">
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.ShippingActivity"></activity>
+        <activity android:name=".activities.SellCartActivity" />
+        <activity android:name=".activities.CartActivity" />
+        <activity android:name=".activities.SearchBookListActivity" />
+        <activity android:name=".activities.BookDetailActivity" />
+        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name=".activities.ChangePasswordActivity" />
+        <activity android:name=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+        <activity android:name=".activities.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

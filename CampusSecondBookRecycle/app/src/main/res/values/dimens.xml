@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <!--搜索框背景-->
-    <dimen name="searchRadius">10dp</dimen>
-    <!--首页书图片宽高-->
-    <dimen name="bookItemWidth">100dp</dimen>
-    <dimen name="bookItemHeight">150dp</dimen>
-</resources>

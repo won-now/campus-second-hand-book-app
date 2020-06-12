@@ -34,8 +34,10 @@ public class TabView extends FrameLayout {
     public void setSelected(boolean selected){
         if(selected){
             mIvIconSelected.setVisibility(VISIBLE);
+//            mIvIcon.setVisibility(INVISIBLE);
             mTvTitle.setTextColor(getResources().getColor(R.color.colorMain));
         }else {
+//            mIvIcon.setVisibility(VISIBLE);
             mIvIconSelected.setVisibility(INVISIBLE);
             mTvTitle.setTextColor(getResources().getColor(R.color.colorTab));
         }

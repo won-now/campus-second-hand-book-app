@@ -5,40 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
-    <include layout="@layout/view_nav_bar"/>
-
-    <demo.com.campussecondbookrecycle.Views.SearchView
+    <demo.com.campussecondbookrecycle.Views.NavBarView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"
-        app:input_hint="书名 作者 ISBN"/>
+        app:show_back="false"
+        app:page_title="cycle_book"/>
+
     <FrameLayout
         android:id="@+id/fl_replaced"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tl_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/CustomTabLayout"/>
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/vp_main"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:layout_marginTop="10dp"/>
-        </LinearLayout>
     </FrameLayout>
 
     <View
@@ -57,24 +36,28 @@
             android:id="@+id/tab_home"
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:onClick="selectHome"
             android:layout_height="wrap_content"/>
 
         <demo.com.campussecondbookrecycle.Views.TabView
-            android:id="@+id/tab_textbook"
+            android:id="@+id/tab_cart"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:onClick="selectCart"
             android:layout_height="wrap_content"/>
 
         <demo.com.campussecondbookrecycle.Views.TabView
             android:id="@+id/tab_order"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:onClick="selectOrder"
             android:layout_height="wrap_content"/>
 
         <demo.com.campussecondbookrecycle.Views.TabView
             android:id="@+id/tab_me"
             android:layout_weight="1"
             android:layout_width="0dp"
+            android:onClick="selectMe"
             android:layout_height="wrap_content"/>
     </LinearLayout>
 

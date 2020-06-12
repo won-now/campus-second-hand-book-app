@@ -4,4 +4,16 @@
     <declare-styleable name="SearchView">
         <attr name="input_hint" format="string|reference"/>
     </declare-styleable>
+
+    <!--输入框-->
+    <declare-styleable name="inputView">
+        <attr name="input_icon" format="reference"/>
+        <attr name="input_hint2" format="string"/>
+        <attr name="is_password" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="navBar">
+        <attr name="page_title" format="string"/>
+        <attr name="show_back" format="boolean"/>
+    </declare-styleable>
 </resources>

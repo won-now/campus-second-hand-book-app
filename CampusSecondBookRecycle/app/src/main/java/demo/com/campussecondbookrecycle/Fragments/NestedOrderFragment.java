@@ -1,5 +1,6 @@
 package demo.com.campussecondbookrecycle.Fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,11 +20,16 @@ import com.alibaba.fastjson.JSON;
 
 import java.util.List;
 
-import Models.OrderListModel;
+import demo.com.campussecondbookrecycle.Models.HttpResult;
 import demo.com.campussecondbookrecycle.Adapters.OrderListAdapter;
-import Models.OrderModel;
+import demo.com.campussecondbookrecycle.Models.OrderVo;
 import demo.com.campussecondbookrecycle.R;
-import demo.com.campussecondbookrecycle.Utils.IOStreamHandler;
+import demo.com.campussecondbookrecycle.activities.LoginActivity;
+import demo.com.campussecondbookrecycle.helpers.RetrofitHelper;
+import demo.com.campussecondbookrecycle.service.OrderService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class NestedOrderFragment extends Fragment {
     private static final String KEY_TRADE = "KEY_TRADE";
@@ -32,11 +38,12 @@ public class NestedOrderFragment extends Fragment {
     private int mType = -1;
 
     private RecyclerView mRvOrderList;
-    private OrderListModel mOrderListModel;
+    private OrderListAdapter mOrderListAdapter;
 
     public static NestedOrderFragment newInstance(int type){
         Bundle bundle = new Bundle();
         bundle.putInt(KEY_TRADE, type);
+        Log.d("position",type+"");
         NestedOrderFragment nestedOrderFragment = new NestedOrderFragment();
         nestedOrderFragment.setArguments(bundle);
         return nestedOrderFragment;
@@ -46,9 +53,35 @@ public class NestedOrderFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String jsonOrders = IOStreamHandler.JsontoString(getActivity(),"OrderData.json");
-        mOrderListModel = JSON.parseObject(jsonOrders, OrderListModel.class);
-        Log.d("BOOK",mOrderListModel.toString());
+        mOrderListAdapter = new OrderListAdapter(getActivity());
+        OrderService orderService = RetrofitHelper.getRetrofit(getActivity()).create(OrderService.class);
+        Log.d(KEY_TRADE,getArguments().getInt(KEY_TRADE)+"");
+        Call<HttpResult<List<OrderVo>>> call = orderService.list(getArguments().getInt(KEY_TRADE,0));
+        call.enqueue(new Callback<HttpResult<List<OrderVo>>>() {
+            @Override
+            public void onResponse(Call<HttpResult<List<OrderVo>>> call, Response<HttpResult<List<OrderVo>>> response) {
+                Log.d("order","response");
+                HttpResult<List<OrderVo>> httpResult = response.body();
+                if(httpResult != null) {
+                    Log.d("order",httpResult.getStatus()+"");
+//                    Log.d("order",httpResult.getMsg());
+                }
+                if (httpResult != null && httpResult.getStatus() == 0){
+                    List<OrderVo> orderVoList = httpResult.getData();
+                    mOrderListAdapter.setData(orderVoList);
+//                    Log.d("order",orderVoList.get(0).getOrderNo()+"");
+                    mOrderListAdapter.notifyDataSetChanged();
+                }else if (httpResult.getStatus() == 10){
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<HttpResult<List<OrderVo>>> call, Throwable t) {
+
+            }
+        });
     }
 
     @Nullable
@@ -61,7 +94,7 @@ public class NestedOrderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRvOrderList = view.findViewById(R.id.rv_order_list);
-        mRvOrderList.setAdapter(new OrderListAdapter(getActivity(),mOrderListModel.getOrderList()));
+        mRvOrderList.setAdapter(mOrderListAdapter);
         mRvOrderList.setLayoutManager(new LinearLayoutManager(getActivity()));
         DividerItemDecoration divider = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
         Drawable dividerDrawable = ContextCompat.getDrawable(getActivity(),R.drawable.item_divider);
